@@ -30,15 +30,36 @@ export default function Contact() {
     resolver: zodResolver(contactSchema),
   });
 
+  // const onSubmit = async (data: ContactFormData) => {
+  //   setLoading(true);
+  //   console.log('Form data:', data);
+  //   await new Promise((r) => setTimeout(r, 1000));
+  //   setLoading(false);
+  //   setSubmitted(true);
+  //   reset();
+  //   setTimeout(() => setSubmitted(false), 4000);
+  // };
+
   const onSubmit = async (data: ContactFormData) => {
-    setLoading(true);
-    console.log('Form data:', data);
-    await new Promise((r) => setTimeout(r, 1000));
+  setLoading(true);
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+      reset();
+      setTimeout(() => setSubmitted(false), 4000);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  } finally {
     setLoading(false);
-    setSubmitted(true);
-    reset();
-    setTimeout(() => setSubmitted(false), 4000);
-  };
+  }
+};
 
   return (
     <section className="min-h-screen bg-[#0d0a1e] relative flex flex-col items-center justify-center py-24 overflow-hidden">
