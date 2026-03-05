@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "role": "Full-stack Developer.",
+    "description": "A passionate full-stack developer who builds responsive and user-friendly websites and applications.",
+    "button": "Contact"
+  },
+"about": {
+  "title": "About",
+  "text": "I'm a Junior Software Developer currently learning and building projects to improve my programming skills. I enjoy creating web and mobile applications and turning ideas into real products using clean and structured code.\n\nI have experience working with C#, ASP.NET Web API, JavaScript, React Native, Next.js, and Bootstrap. I also have basic knowledge of Python and C++. I work with APIs and databases using tools such as Dapper and Entity Framework.\n\nI enjoy learning new technologies and solving programming problems. Recently I’ve been working on projects involving API development, mobile interfaces, and interactive 3D graphics using Three.js.\n\nI'm based in Baku, Azerbaijan, and I'm open to remote work opportunities and collaboration.\n\nFeel free to check out my projects and portfolio."
+},
+"skills": {
+    "title": "Skills & Expertise",
+    "subtitle": "Tech Stack Mastery",
+    "description": "Comprehensive skill set spanning modern web technologies and development practices."
+  },
+  "projects": {
+  "title": "Featured Projects",
+  "subtitle": "A selection of projects that showcase my skills and experience",
+  "github": "View More on GitHub",
+  "project1Title": "Virtual Galaxy Explorer",
+  "project1Desc": "An immersive virtual reality experience that allows users to explore galaxies and celestial bodies in real-time. Built with React, Three.js, and WebGL.",
+  "project2Title": "E-Commerce User Dashboard",
+  "project2Desc": "A user dashboard for an e-commerce platform, providing order tracking, profile management, and personalized recommendations.",
+  "project3Title": "Portfolio Website",
+  "project3Desc": "Personal portfolio built with Next.js, featuring smooth animations, dark theme and responsive design."
+},
+  "contact": {
+  "title": "Get In Touch",
+  "subtitle": "Have a project in mind? Let's work together to bring your ideas to life.",
+  "leftTitle": "Let's talk about your project",
+  "leftText": "I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!",
+  "nameLabel": "Name", "namePlaceholder": "Your name",
+  "emailLabel": "Email", "emailPlaceholder": "your.email@example.com",
+  "messageLabel": "Message", "messagePlaceholder": "Tell me about your project...",
+  "send": "Send Message", "sending": "Sending...",
+  "success": "Message sent! I'll get back to you soon."
+},
+   "footer": {
+    "description": "Full Stack Developer specializing in JavaScript & TypeScript. Building innovative solutions with modern technologies.",
+    "available": "Available for Work",
+    "navigation": "Navigation",
+    "connect": "Connect",
+    "chat": "Feel free to reach out for collaborations or just a friendly chat!",
+    "powered": "Powered by React & TypeScript",
+    "styled": "Styled with Tailwind CSS"
+  }
+}

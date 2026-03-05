@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Ana səhifə",
+    "about": "Haqqımda",
+    "skills": "Bacarıqlar",
+    "projects": "Layihələr",
+    "contact": "Əlaqə"
+  },
+  "hero": {
+    "greeting": "Salam, mən",
+    "role": "Full-stack Proqramçısı.",
+    "description": "Responsiv və istifadəçi dostu veb saytlar hazırlayıram.",
+    "button": "Əlaqə"
+  },
+"about": {
+  "title": "Haqqımda",
+  "text": "Mən Junior proqramçıyam və hazırda proqramlaşdırmanı öyrənirəm və bacarıqlarımı inkişaf etdirmək üçün müxtəlif layihələr hazırlayıram. Veb və mobil tətbiqlər yaratmağı və ideyaları təmiz və strukturlaşdırılmış kod vasitəsilə real məhsullara çevirməyi sevirəm.\n\nC#, ASP.NET Web API, JavaScript, React Native, Next.js və Bootstrap texnologiyaları ilə işləmə təcrübəm var. Həmçinin Python və C++ dillərini də öyrənmişəm.\n\nAPI və verilənlər bazası ilə Dapper və Entity Framework vasitəsilə işləyirəm.\n\nYeni texnologiyalar öyrənməyi və proqramlaşdırma problemlərini həll etməyi sevirəm. Son zamanlar API inkişafı, mobil interfeyslər və Three.js ilə interaktiv 3D qrafika üzərində işləyirəm.\n\nMən Bakı, Azərbaycan şəhərində yaşayıram və uzaqdan işləməyə və əməkdaşlığa açığam.\n\nLayihələrimlə tanış olmağınızdan məmnun olaram."
+},
+"skills": {
+    "title": "Bacarıqlar və Təcrübə",
+    "subtitle": "Texnologiya Bilikləri",
+    "description": "Müasir veb texnologiyalarını əhatə edən hərtərəfli bacarıq dəsti."
+  },
+  "projects": {
+  "title": "Seçilmiş Layihələr",
+  "subtitle": "Bacarıq və təcrübəmi nümayiş etdirən layihələr",
+  "github": "GitHub-da daha çox baxın",
+  "project1Title": "Virtual Qalaktika Kəşfiyyatçısı",
+  "project1Desc": "React, Three.js və WebGL ilə hazırlanmış real vaxt rejimində qalaktikaları kəşf etmək üçün virtual reality təcrübəsi.",
+  "project2Title": "E-Ticarət İstifadəçi Paneli",
+  "project2Desc": "Sifariş izləmə və profil idarəetməsi ilə e-ticarət platforması üçün istifadəçi paneli.",
+  "project3Title": "Portfolio Saytı",
+  "project3Desc": "Next.js ilə hazırlanmış hamar animasiyalar, qaranlıq tema və responsiv dizaynlı şəxsi portfolio."
+},
+  "contact": {
+  "title": "Əlaqə",
+  "subtitle": "Layihəniz var? Birlikdə işləyək.",
+  "leftTitle": "Layihəniz haqqında danışaq",
+  "leftText": "Həmişə yeni layihələr haqqında eşitməyə hazıram. Sualınız varsa və ya salam demək istəyirsinizsə — yazın!",
+  "nameLabel": "Ad", "namePlaceholder": "Adınız",
+  "emailLabel": "Email", "emailPlaceholder": "email@example.com",
+  "messageLabel": "Mesaj", "messagePlaceholder": "Layihəniz haqqında danışın...",
+  "send": "Göndər", "sending": "Göndərilir...",
+  "success": "Mesaj göndərildi! Tezliklə cavab verəcəm."
+},
+  "footer": {
+    "description": "JavaScript və TypeScript üzrə ixtisaslaşmış Full Stack proqramçı.",
+    "available": "İşə hazıram",
+    "navigation": "Naviqasiya",
+    "connect": "Əlaqə",
+    "chat": "Əməkdaşlıq və ya sadəcə söhbət üçün yazın!",
+    "powered": "React və TypeScript ilə hazırlanıb",
+    "styled": "Tailwind CSS ilə stilləşdirilib"
+  }
+  
+}
