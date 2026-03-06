@@ -1,43 +1,67 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import { useState, useEffect } from 'react';
 import ProjectCard from './ui/ProjectCard';
 
-const projectsData = [
+const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5555/api';
+
+interface DBProject {
+  _id: string;
+  title: { az: string; en: string; ru: string };
+  description: { az: string; en: string; ru: string };
+  image?: string;
+  github?: string;
+  demo?: string;
+  video?: string;
+  tags: string[];
+}
+
+const staticProjectsData = [
   {
-    titleKey: 'project1Title',
+    titleKey: 'project1Title', 
     descKey: 'project1Desc',
-    image: '/project-1.png',
+    image: '/project-1.png', 
     tags: ['React native', 'Node.js', 'MongoDB', 'Stripe'],
-    github: 'https://github.com/lyamanA/my-app.git',
-    demo: null,
+    github: 'https://github.com/lyamanA/my-app.git', 
+    demo: null, 
     //'/projects/virtualGalaxyExplorer.mp4'
-    video: null, 
-  },
-  {
-    titleKey: 'project2Title',
-    descKey: 'project2Desc',
-    image: '/project-2.png',
-    tags: ['C#', 'ASP.NET', 'Entity Framework', 'SQL Server'],
-    github: 'https://github.com/lyamanA/E-Commerce-User.git',
-    demo: null,
     video: null,
   },
   {
-    titleKey: 'project3Title',
+    titleKey: 'project2Title', 
+    descKey: 'project2Desc',
+    image: '/project-2.png',
+    tags: ['C#', 'ASP.NET', 'Entity Framework', 'SQL Server'],
+    github: 'https://github.com/lyamanA/E-Commerce-User.git', 
+    demo: null, 
+    video: null,
+  },
+  {
+    titleKey: 'project3Title', 
     descKey: 'project3Desc',
-    image: '/project-3.png',
+    image: '/project-3.png', 
     tags: ['Next.js', 'TypeScript', 'Tailwind', 'Zustand'],
-    github: 'https://github.com/lyamanA',
-    demo: null,
+    github: 'https://github.com/lyamanA/new-portfolio-app.git', 
+    demo: null, 
     video: null,
   },
 ];
 
 export default function Projects() {
   const t = useTranslations('projects');
+  const locale = useLocale() as 'az' | 'en' | 'ru';
+  const [dbProjects, setDbProjects] = useState<DBProject[]>([]);
 
-  const projects = projectsData.map(p => ({
+  useEffect(() => {
+    fetch(`${API}/projects`)
+      .then(res => res.json())
+      .then(data => setDbProjects(Array.isArray(data) ? data : []))
+      .catch(() => {});
+  }, []);
+
+  // Статичные проекты из json переводов
+  const staticProjects = staticProjectsData.map(p => ({
     title: t(p.titleKey),
     description: t(p.descKey),
     image: p.image,
@@ -46,6 +70,20 @@ export default function Projects() {
     demo: p.demo,
     video: p.video,
   }));
+
+  // Динамические проекты из MongoDB
+  const dynamicProjects = dbProjects.map(p => ({
+    title: p.title[locale],
+    description: p.description[locale],
+    image: p.image || '/project-1.png',
+    tags: p.tags,
+    github: p.github || null,
+    demo: p.demo || null,
+    video: p.video || null,
+  }));
+
+  // Объединяем — сначала статичные, потом из БД
+  const allProjects = [...staticProjects, ...dynamicProjects];
 
   return (
     <section className="min-h-screen bg-[#0d0a1e] relative flex flex-col items-center justify-center py-24 overflow-hidden">
@@ -67,8 +105,8 @@ export default function Projects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+          {allProjects.map((project, index) => (
+            <ProjectCard key={index} project={project} />
           ))}
         </div>
 

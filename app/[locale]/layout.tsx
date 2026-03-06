@@ -27,7 +27,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body
+       suppressHydrationWarning={true} 
+       className={`${geistSans.variable} ${geistMono.variable}`}>
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <Navbar />

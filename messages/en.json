@@ -8,6 +8,7 @@
   },
   "hero": {
     "greeting": "Hi, I'm",
+    "name": "Lyaman",
     "role": "Full-stack Developer.",
     "description": "A passionate full-stack developer who builds responsive and user-friendly websites and applications.",
     "button": "Contact"

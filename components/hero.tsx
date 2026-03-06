@@ -8,6 +8,7 @@ export default function Hero() {
   const t = useTranslations('hero');
   const locale = useLocale();
   const roleText = t('role');
+  const myName = t('name');
 
   const [displayedText, setDisplayedText] = useState('');
   const [index, setIndex] = useState(0);
@@ -36,7 +37,7 @@ export default function Hero() {
 
         <div className="max-w-xl text-center md:text-left">
           <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-3">
-            {t('greeting')} <span className="text-white">Lyaman</span>
+            {t('greeting')} <span className="text-white">{myName}</span>
           </h1>
           <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-6 min-h-[48px] md:min-h-[60px]">
             {displayedText}

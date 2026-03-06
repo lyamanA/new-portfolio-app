@@ -8,6 +8,7 @@
   },
   "hero": {
     "greeting": "Salam, mən",
+    "name": "Ləman",
     "role": "Full-stack Proqramçısı.",
     "description": "Responsiv və istifadəçi dostu veb saytlar hazırlayıram.",
     "button": "Əlaqə"
