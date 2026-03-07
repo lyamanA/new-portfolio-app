@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import ThreeScene from '@/components/three/ThreeScene';
+
 
 export default function Hero() {
   const t = useTranslations('hero');
@@ -31,6 +33,8 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen bg-[#0d0a14] relative overflow-hidden flex items-center">
+       {/* Three.js частицы как фон */}
+      <ThreeScene />
       <div className="absolute right-0 top-0 w-[600px] h-full bg-purple-600 opacity-30 blur-[120px] rounded-full" />
 
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between relative z-10 py-20 md:py-0">
@@ -59,6 +63,8 @@ export default function Hero() {
         </div>
 
       </div>
+      {/* Плавный переход вниз */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#0d0a1e] z-20" />
     </section>
   );
 }

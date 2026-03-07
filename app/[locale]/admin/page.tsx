@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { projectsApi } from '@/lib/api';
 
 interface ProjectTitle {
   az: string; en: string; ru: string;
@@ -44,11 +45,22 @@ export default function AdminDashboard() {
 
   useEffect(() => { fetchProjects(); }, []);
 
+  // const fetchProjects = async () => {
+  //   const res = await fetch(`${API}/projects`);
+  //   const data = await res.json();
+  //   setProjects(data);
+  // };
+
   const fetchProjects = async () => {
-    const res = await fetch(`${API}/projects`);
-    const data = await res.json();
+  try {
+    const data = await projectsApi.getAll();
     setProjects(data);
-  };
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+  
 
   const openModal = () => {
     setForm(emptyForm);
@@ -94,32 +106,64 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
   setIsModalOpen(true);
 };
 
-  const handleSubmit = async () => {
-    const method = editId ? 'PUT' : 'POST';
-    const url = editId ? `${API}/projects/${editId}` : `${API}/projects`;
+  // const handleSubmit = async () => {
+  //   const method = editId ? 'PUT' : 'POST';
+  //   const url = editId ? `${API}/projects/${editId}` : `${API}/projects`;
 
-    await fetch(url, {
-      method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ...form,
-        tags: form.tags.split(',').map(t => t.trim()),
-      }),
-    });
+  //   await fetch(url, {
+  //     method,
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({
+  //       ...form,
+  //       tags: form.tags.split(',').map(t => t.trim()),
+  //     }),
+  //   });
 
+  //   setIsModalOpen(false);
+  //   setForm(emptyForm);
+  //   setEditId(null);
+  //   fetchProjects();
+  //   router.refresh();
+  // };
+
+const handleSubmit = async () => {
+  try {
+    const payload = {
+      ...form,
+      tags: form.tags.split(',').map(t => t.trim()),
+    };
+    if (editId) {
+      await projectsApi.update(editId, payload);
+    } else {
+      await projectsApi.create(payload);
+    }
     setIsModalOpen(false);
     setForm(emptyForm);
     setEditId(null);
     fetchProjects();
     router.refresh();
-  };
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+  // const handleDelete = async (id: string) => {
+  //   if (!confirm('Delete this project?')) return;
+  //   await fetch(`${API}/projects/${id}`, { method: 'DELETE' });
+  //   fetchProjects();
+  //   router.refresh();
+  // };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Delete this project?')) return;
-    await fetch(`${API}/projects/${id}`, { method: 'DELETE' });
+  if (!confirm('Delete this project?')) return;
+  try {
+    await projectsApi.delete(id);
     fetchProjects();
     router.refresh();
-  };
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   if (status === 'loading') return <div className="text-white p-8">Loading...</div>;
 

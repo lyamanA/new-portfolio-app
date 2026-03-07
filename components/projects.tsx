@@ -3,6 +3,8 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { useState, useEffect } from 'react';
 import ProjectCard from './ui/ProjectCard';
+import ThreeSceneSkills from './three/ThreeSceneProjects';
+import { usePortfolioStore } from '@/store/usePortfolioStore';
 
 const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5555/api';
 
@@ -51,14 +53,19 @@ const staticProjectsData = [
 export default function Projects() {
   const t = useTranslations('projects');
   const locale = useLocale() as 'az' | 'en' | 'ru';
-  const [dbProjects, setDbProjects] = useState<DBProject[]>([]);
+  // const [dbProjects, setDbProjects] = useState<DBProject[]>([]);
+  const { projects: dbProjects, loading, fetchProjects } = usePortfolioStore();
+
+  // useEffect(() => {
+  //   fetch(`${API}/projects`)
+  //     .then(res => res.json())
+  //     .then(data => setDbProjects(Array.isArray(data) ? data : []))
+  //     .catch(() => {});
+  // }, []);
 
   useEffect(() => {
-    fetch(`${API}/projects`)
-      .then(res => res.json())
-      .then(data => setDbProjects(Array.isArray(data) ? data : []))
-      .catch(() => {});
-  }, []);
+    fetchProjects();  // ← через store
+  }, [fetchProjects]);
 
   // Статичные проекты из json переводов
   const staticProjects = staticProjectsData.map(p => ({
@@ -86,7 +93,12 @@ export default function Projects() {
   const allProjects = [...staticProjects, ...dynamicProjects];
 
   return (
-    <section className="min-h-screen bg-[#0d0a1e] relative flex flex-col items-center justify-center py-24 overflow-hidden">
+    <section className="bg-[#0d0a1e] relative flex flex-col items-center justify-center py-24 overflow-hidden">
+       {/* Three.js орбы */}
+            <ThreeSceneSkills />
+      
+            {/* Плавный переход сверху от about */}
+            <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0d0a1e] to-transparent z-20" />
       <div className="absolute inset-0 opacity-10" style={{
         backgroundImage: `linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)`,
         backgroundSize: '80px 80px',
@@ -106,8 +118,8 @@ export default function Projects() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
           {allProjects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
+            <ProjectCard key={index} project={project} /> )
+            )}
         </div>
 
         <div className="flex justify-center mt-14">
@@ -120,6 +132,8 @@ export default function Projects() {
           </a>
         </div>
       </div>
+      {/* Плавный переход вниз */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#0d0a1e] z-20" />
     </section>
   );
 }

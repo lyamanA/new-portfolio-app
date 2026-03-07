@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from "next-intl";
+import ThreeSceneSkills from '@/components/three/ThreeSceneSkills';
 
 const skills = [
   { name: 'React', icon: '⚛️', level: 90, category: 'Frontend' },
@@ -37,9 +38,23 @@ export default function Skills() {
   const t = useTranslations('skills');
   return (
     <section className="min-h-screen bg-[#0d0a1e] relative flex flex-col items-center justify-center py-24 overflow-hidden">
-      
+      {/* Three.js орбы */}
+      <ThreeSceneSkills />
+
+      {/* Плавный переход сверху от about */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0d0a1e] to-transparent z-20" />
+
+      {/* Сетка */}
+      <div className="absolute inset-0 opacity-10" style={{
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)`,
+        backgroundSize: '80px 80px',
+      }} />
+
+
+
+
       {/* Сетка на фоне */}
-      <div
+      {/* <div
         className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: `
@@ -48,7 +63,7 @@ export default function Skills() {
           `,
           backgroundSize: '80px 80px',
         }}
-      />
+      /> */}
 
       {/* Фиолетовое свечение */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-purple-700 opacity-10 blur-[120px] rounded-full pointer-events-none" />
@@ -79,6 +94,8 @@ export default function Skills() {
           ))}
         </div>
       </div>
+       {/* Плавный переход вниз */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#0d0a1e] z-20" />
     </section>
   );
 }

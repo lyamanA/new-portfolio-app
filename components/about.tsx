@@ -1,12 +1,21 @@
 'use client';
 import { useTranslations } from 'next-intl';
+import ThreeSceneAbout from '@/components/three/ThreeSceneAbout';
 
 export default function AboutSection() {
   const t = useTranslations('about');
 
   return (
     <section className="min-h-screen bg-[#0d0a1e] relative flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 opacity-10" style={{
+       
+       
+       {/* Галактика на фоне */}
+      <ThreeSceneAbout />
+
+      
+
+      <div className="absolute inset-0 opacity-10 bg-[#0d0a1e]/60 z-[1]" 
+      style={{
         backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
         backgroundSize: '80px 80px',
       }} />

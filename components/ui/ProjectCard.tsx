@@ -5,16 +5,14 @@ import { useState } from 'react';
 import VideoModal from './VideoModal';
 import { AiOutlinePlayCircle } from 'react-icons/ai';
 
-// Вам нужно будет импортировать 'projectsData' из Projects.tsx или определить его здесь,
-// если вы хотите, чтобы ProjectCard был полностью самодостаточным.
-// Для простоты, допустим, projectsData передается через пропсы, как в вашем Projects.tsx.
+
 interface Project {
   title: string;
   description: string;
   image: string | null;
   tags: string[];
   github: string | null;
-  demo: string | null; // Теперь может быть null
+  demo: string | null; 
   video: string | null;
 }
 
