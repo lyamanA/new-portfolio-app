@@ -11,5 +11,5 @@ export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-// Хелпер — используй в серверных компонентах
+// Хелпер — в серверных компонентах
 export const getSession = () => getServerSession(authOptions);
