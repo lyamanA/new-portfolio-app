@@ -27,7 +27,7 @@ const emptyForm = {
 };
 
 
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5555/api';
+// const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5555/api';
 
 export default function AdminDashboard() {
   const { data: session, status } = useSession();
@@ -77,9 +77,11 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
   setImageLoading(true);
   const formData = new FormData();
   formData.append('image', file);
+
+  const BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5555/api';
   
   try {
-    const res = await fetch(`${API}/projects/upload`, {
+    const res = await fetch(`${BASE}/projects/upload`, {
       method: 'POST',
       body: formData,
     });
